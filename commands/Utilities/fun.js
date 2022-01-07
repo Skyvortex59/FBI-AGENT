@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 exports.run = async (bot, message, args) => {
-    message.delete();
+    
     if (message.author == "323426247285669899") {
         message.channel.send("J'aime mon maître ~~bien qu'il me martyrise avec ses erreurs...~~")
     } else {

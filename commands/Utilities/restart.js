@@ -3,6 +3,7 @@ const config = require("../../Storage/config.json");
 
 
 exports.run = async (bot, message, args) => {
+    
     await message.channel.send(`Déconnexion...`);
     await bot.destroy(config.token);
     await bot.login(config.token);

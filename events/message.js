@@ -1,4 +1,7 @@
 const Discord = require("discord.js");
+const fetch = require('node-fetch');
+const config = require("../Storage/config.json");
+
 
 module.exports = async (bot, message) => {
 
@@ -10,13 +13,12 @@ module.exports = async (bot, message) => {
     const command = args.shift().slice(prefix.length).toLowerCase();
     const cmd = bot.commands.get(command) || bot.aliases.get(command);
     
-    // bot.on('message', (message) => {
-        const reactFunction = require('../functions/react.js');
-        await reactFunction.sortie(bot, message);
-        await reactFunction.reacting(bot, message);
-        await reactFunction.pedoCard(bot, message);
+    const reactFunction = require('../functions/react.js');
+    await reactFunction.sortie(bot, message);
+    await reactFunction.reacting(bot, message);
+    await reactFunction.pedoCard(bot, message);
+    await reactFunction.fakeGift(bot, message);
         
-    // })
 
     if(!message.content.toLowerCase().startsWith(prefix) || !message.guild || message.author.bot || !cmd) return;
     if(cmd.requirements.botOwner && cmd.requirements.botOwner === true && !owners.includes(message.author.id)) return bot.functions.error(message.channel, "Désolé, seul le développeur peut utiliser cette commande.");
@@ -26,5 +28,9 @@ module.exports = async (bot, message) => {
     
 
     cmd.run(bot, message, args).catch(e => {return console.log(e)});
+
+    bot.logger.log(`[${message.member.user.tag}] a utilisé la commande [${cmd.help.name}]`).catch(e => {return console.log(e)});
+
+    message.delete()
 
 } 

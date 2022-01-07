@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 
 exports.run = async (bot, message, args) => {
-    message.delete();
+
     const cahier = new Discord.MessageEmbed() //Crée un embed
         .setColor('#FF0000') 
         .setAuthor(`${message.author.username}`, message.author.displayAvatarURL())
