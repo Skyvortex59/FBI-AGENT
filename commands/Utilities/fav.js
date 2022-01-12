@@ -11,7 +11,8 @@ exports.run = async (bot, message, args) => {
 
 exports.help = {
     name: "favoritisme",
-    aliases: ['fav']
+    aliases: ['fav'],
+    description: "Cette commande ne sert à rien x)."
 }
 
 exports.requirements = {

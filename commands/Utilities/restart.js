@@ -5,15 +5,15 @@ const config = require("../../Storage/config.json");
 exports.run = async (bot, message, args) => {
     
     await message.channel.send(`Déconnexion...`);
-    await bot.destroy(config.token);
-    await bot.login(config.token);
     const loadEmote = bot.guilds.cache.get('323426566975782912').emojis.cache.get('832711946510925854');
     await message.channel.send(`Reconnexion dans 5 ${loadEmote}`)
     
     var counter = 5;
     var intervalId = null;
-    function finish() {
-        clearInterval(intervalId);	
+    async function finish() {
+        await bot.destroy(config.token);
+        await bot.login(config.token);
+        await clearInterval(intervalId);	
     }
     function alert() {
         counter--;
@@ -23,7 +23,7 @@ exports.run = async (bot, message, args) => {
         }else {	
             message.channel.send(counter + ` ${loadEmote}`);
         }
-    }
+    };
     
     intervalId = setInterval(alert, 1000);
     
@@ -32,7 +32,8 @@ exports.run = async (bot, message, args) => {
 
 exports.help = {
     name: "restart",
-    aliases: ['r']
+    aliases: ['r'],
+    description: "Cette commande sert à restart le bot."
 }
 
 exports.requirements = {

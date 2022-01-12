@@ -12,7 +12,8 @@ exports.run = async (bot, message, args) => {
 
 exports.help = {
     name: "clear",
-    aliases: ['purge']
+    aliases: ['purge'],
+    description: "Cette commande sert à supprimier jusqu'à 99 messages inclus : f:clear [0 à 99]"
 }
 
 exports.requirements = {

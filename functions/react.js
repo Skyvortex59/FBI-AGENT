@@ -131,7 +131,7 @@ var functions = {
                 response.on('end', () => {
                     // console.log(data)
 
-                    if(data.includes("months of Discord Nitro") && !message.content.toLowerCase().includes('https://discord.gift')) {
+                    if(data.includes("months of Discord Nitro") && !message.content.toLowerCase().includes('discord.gift')) {
                         message.delete();
 
                         let member = message.guild.members.cache.get(message.author.id);

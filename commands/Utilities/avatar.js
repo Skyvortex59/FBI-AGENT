@@ -29,7 +29,8 @@ exports.run = async (bot, message, args) => {
 
 exports.help = {
     name: "avatar",
-    aliases: ['pp']
+    aliases: ['pp'],
+    description: "Cette commande sert afficher son avatar : f!avatar\nOu l'avatar de quelqu'un d'autres : f!avatar @[someone]."
 };
 
 exports.requirements = {

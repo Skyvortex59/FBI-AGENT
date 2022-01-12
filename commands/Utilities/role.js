@@ -140,7 +140,8 @@ exports.run = async (bot, message, args) => {
 
 exports.help = {
     name: "role",
-    aliases: ['r']
+    aliases: [],
+    description: "Cette commande sert à faire un menu de role et à se les ajouter/enlever."
 }
 
 exports.requirements = {

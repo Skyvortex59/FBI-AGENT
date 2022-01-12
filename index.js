@@ -8,6 +8,7 @@ const bot = new Discord.Client();
 
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
+bot.description = new Discord.Collection();
 bot.event = new Discord.Collection();
 
 const loadCommands = require("./functions/commands.js");

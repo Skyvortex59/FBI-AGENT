@@ -25,6 +25,9 @@ module.exports = {
                 if(props.help.aliases) for (const alias of props.help.aliases){
                     bot.aliases.set(alias, props);
                 }
+                if(props.help.description) for (const description of props.help.description){
+                    bot.description.set(description, props);
+                }
             })
         })
     },
