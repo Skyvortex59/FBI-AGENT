@@ -15,7 +15,7 @@ exports.run = async (bot, message, args) => {
             .setColor('#FF0000') 
             .setAuthor(`${message.author.username}`, message.author.displayAvatarURL())
             .setTitle(`Aide`)
-            .addField(`Commande : ${cmd.help.name}, ${cmd.help.description}`)
+            .addField(`Commande : ${cmd.help.name}`, cmd.help.description)
             .setTimestamp()
             .setFooter("Heureux de vous avoir aidé !")
 
