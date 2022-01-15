@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
+const command = 
 
 
 exports.run = async (bot, message, args) => {
@@ -18,11 +19,11 @@ exports.run = async (bot, message, args) => {
 
     const getDesc = async (description) => {
         await description;
-        const desc = description;
+        const desc = description.help;
         return desc
     }
-    const asynchrone = await getDesc(bot.aliases);
-    console.log(bot.aliases, asynchrone)
+    const asynchrone = await getDesc(bot);
+    console.log(/*bot.aliases,*/ asynchrone)
 
 
     const cahier = new Discord.MessageEmbed() //Crée un embed
