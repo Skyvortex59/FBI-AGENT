@@ -1,40 +1,27 @@
 const Discord = require("discord.js");
-const fs = require("fs");
-const command = 
-
 
 exports.run = async (bot, message, args) => {
 
-    // async function searchCommand (dirname) {
-    //     fs.readdir(dirname, (err, files) => {
-    //         if(err) console.error(err);
-            
-            
-    //     })
-        
-    // }
+    //Si on demande l'aide sur une commande
+    if (args) {
     
-    // searchCommand("./commands/Utilities")
+        //Récupération de la commande
+        const command = args.shift().toLowerCase();
+        const cmd = bot.commands.get(command) || bot.aliases.get(command);
 
+        if (!cmd) return message.channel.send('Commande introuvable');
 
-    const getDesc = async (description) => {
-        await description;
-        const desc = description.help;
-        return desc
+        const cahier = new Discord.MessageEmbed() //Crée un embed
+            .setColor('#FF0000') 
+            .setAuthor(`${message.author.username}`, message.author.displayAvatarURL())
+            .setTitle(`Aide`)
+            .addField(`Commande : ${cmd.help.name}`, cmd.help.description)
+            .setTimestamp()
+            .setFooter("Heureux de vous avoir aidé !")
+
+        message.channel.send(cahier); //envoie l'embed
+        
     }
-    const asynchrone = await getDesc(bot);
-    console.log(/*bot.aliases,*/ asynchrone)
-
-
-    const cahier = new Discord.MessageEmbed() //Crée un embed
-        .setColor('#FF0000') 
-        .setAuthor(`${message.author.username}`, message.author.displayAvatarURL())
-        .setTitle(`Aide`)
-        .addField(`Commande : "test", "Une commande qui sert à envoyer votre avatar`)
-        .setTimestamp()
-        .setFooter("Heureux de vous avoir aidé !")
-
-    message.channel.send(cahier); //envoie l'embed
 
 }
 
