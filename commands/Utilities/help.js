@@ -1,33 +1,41 @@
 const Discord = require("discord.js");
 const fs = require("fs");
-const command = 
+
+exports.run = async(bot, message, args) => {
+
+    async function searchCommand(dirname) {
+        fs.readdir(dirname, (err, files) => {
+            if (err) console.error(err);
+            for (let index = 0; index < files.length; index++) {
+                fs.readFile(dirname + files[index], 'utf-8', (err, data) => {
+                    if (err) {
+                        console.error(err);
+                        return
+                    }
+                    if (data.includes("name: ")) {
+                        var res = "";
+                        var nameRegex = /name:\s+\//g;
+                        res += data.match(nameRegex)
+                    }
+                    console.log(res)
+                })
+
+            }
 
 
-exports.run = async (bot, message, args) => {
+        })
 
-    // async function searchCommand (dirname) {
-    //     fs.readdir(dirname, (err, files) => {
-    //         if(err) console.error(err);
-            
-            
-    //     })
-        
-    // }
-    
-    // searchCommand("./commands/Utilities")
-
-
-    const getDesc = async (description) => {
-        await description;
-        const desc = description.help;
-        return desc
     }
-    const asynchrone = await getDesc(bot);
-    console.log(/*bot.aliases,*/ asynchrone)
+
+    searchCommand("./commands/Utilities/")
+
+
+    var getDesc = bot.commands.get('avatar').help.description
+    console.log(getDesc)
 
 
     const cahier = new Discord.MessageEmbed() //Crée un embed
-        .setColor('#FF0000') 
+        .setColor('#FF0000')
         .setAuthor(`${message.author.username}`, message.author.displayAvatarURL())
         .setTitle(`Aide`)
         .addField(`Commande : "test", "Une commande qui sert à envoyer votre avatar`)
