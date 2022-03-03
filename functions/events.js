@@ -8,7 +8,7 @@ module.exports.run = (bot) => {
     for(const eventFile of eventFiles) {
         const event = require(`${eventDir}/${eventFile}`);
         const eventName = eventFile.split(".").shift();
-        bot.on(eventName, event.bind(null, bot));
+        bot.on(eventName, (...args) => event.execute(...args);
         delete require.cache[require.resolve(`${eventDir}/${eventFile}`)];
     }
     bot.events = eventFiles.length;
